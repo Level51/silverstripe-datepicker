@@ -1,0 +1,37 @@
+{
+    "name": "level51/silverstripe-datepicker",
+    "version": "0.0.1",
+    "time": "2025-09-11",
+    "description": "Datepicker module for Silverstripe using vue3datepicker",
+    "keywords": [
+        "silverstripe",
+        "datepicker",
+        "vue3datepicker"
+    ],
+    "type": "silverstripe-vendormodule",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Level51",
+            "email": "hallo@lvl51.de"
+        }
+    ],
+    "require": {
+        "php": ">=7.1",
+        "ext-json": "*",
+        "silverstripe/framework": "^4 | ^5 | ^6"
+    },
+    "extra": {
+        "installer-name": "silverstripe-datepicker",
+        "expose": [
+            "client",
+            "dist"
+        ]
+    },
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Level51\\Datepicker\\": "src/"
+        }
+    }
+}
