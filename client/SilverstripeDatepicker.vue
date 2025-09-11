@@ -15,7 +15,21 @@ const dates = ref(props.value ? JSON.parse(props.value) : []);
 
 const preparedValue = computed(() => {
   const days = [...dates.value]
-    .map((dateString) => DateTime.fromJSDate(dateString).toISODate())
+    .map((item) => {
+      if (item) {
+        // is already an ISO date string (e.g. 2025-09-11)
+        if (typeof item === 'string' && item.length === 10) {
+          return item;
+        }
+
+        if (item instanceof Date) {
+          return DateTime.fromJSDate(item).toISODate()
+        }
+      }
+
+      return null;
+    })
+    .filter(Boolean)
     .sort((a, b) => {
       const aDate = DateTime.fromISO(a);
       const bDate = DateTime.fromISO(b);
