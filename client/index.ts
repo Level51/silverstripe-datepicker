@@ -6,8 +6,6 @@ import { watchElement } from '@/utils';
 watchElement('.level51SilverstripeDatepicker-mount', (el: HTMLElement) => {
     setTimeout(() => {
         const payload = el.dataset?.payload ? JSON.parse(el.dataset.payload as string) : null;
-        console.log('read payload', payload);
-
         createApp(SilverstripeDatepicker, payload).mount(`#${el.id}`);
     });
 });
