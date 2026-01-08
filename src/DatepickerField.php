@@ -15,13 +15,26 @@ class DatepickerField extends FormField
         return parent::Field($properties);
     }
 
+    public function getValue(): mixed
+    {
+        if (method_exists(parent::class, 'getValue')) {
+            return parent::getValue();
+        }
+
+        if (method_exists(parent::class, 'Value')) {
+            return parent::Value();
+        }
+
+        return null;
+    }
+
     public function getPayload()
     {
         return json_encode(
             [
                 'id'       => $this->ID(),
                 'name'     => $this->getName(),
-                'value'    => $this->Value(),
+                'value'    => $this->getValue(),
                 'settings' => [
                     // TODO make maintainable
                     'format'             => 'dd.MM',
